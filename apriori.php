@@ -1,6 +1,6 @@
 <?php
 
-ini_set('display_errors', 1);
+// ini_set('display_errors', 1);
 
 class Apriori{
 private $data;
@@ -124,6 +124,7 @@ $this->assoc_rules[] = [
 'assoc_items' => $assoc_items,
 'confidence' => $confidence];}}}}}}}}}
 
+/*
 $data = [
     'input' => 'keju',
     'dataset' => [
@@ -170,6 +171,7 @@ $data = [
             ]
         ]
     ];
+*/
 
 // $str_data = $_POST['data'];
 // $str_data = $_GET['data'];
@@ -177,11 +179,12 @@ $data = [
 // $data = json_decode($str_data, true);
 
 $apr = new Apriori;
-$apr->set_data($data);
+$apr->set_data($dataset);
 while ($apr->possible()) {
 $apr->itemset_kandidat();
 $apr->itemset_besar();}
 $apr->aturan_asosiasi();
-echo '<pre>';
-print_r($apr->get_assoc_rules());
+// echo '<pre>';
+// print_r($apr->get_assoc_rules());
+$aturan = $apr->get_assoc_rules();
 // echo json_encode($apr->get_assoc_rules());
